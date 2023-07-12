@@ -194,7 +194,7 @@ pub mod benchmarks {
     #[benchmark]
     fn on_finalize(x: Linear<1, 100>) {
         for nonce in 0..x {
-            let post = ismp_rs::router::Post {
+            let post = Post {
                 source: StateMachine::Kusama(2000),
                 dest: StateMachine::Kusama(2001),
                 nonce: nonce.into(),
@@ -252,7 +252,7 @@ pub mod benchmarks {
 
     #[benchmark]
     fn dispatch_response() {
-        let post = ismp_rs::router::Post {
+        let post = Post {
             source: StateMachine::Kusama(2000),
             dest: StateMachine::Kusama(2001),
             nonce: 0,
