@@ -6,6 +6,7 @@ use ismp_rs::{
     consensus::{
         ConsensusClient, StateCommitment, StateMachineClient, StateMachineHeight, StateMachineId,
     },
+    contracts::Gas,
     error::Error as IsmpError,
     handlers,
     host::{Ethereum, IsmpHost, StateMachine},
@@ -30,16 +31,16 @@ where
 pub struct MockModule;
 
 impl IsmpModule for MockModule {
-    fn on_accept(&self, _request: Post) -> Result<(), ismp_rs::error::Error> {
-        Ok(())
+    fn on_accept(&self, _request: Post) -> Result<Gas, ismp_rs::error::Error> {
+        Ok(().into())
     }
 
-    fn on_response(&self, _response: Response) -> Result<(), ismp_rs::error::Error> {
-        Ok(())
+    fn on_response(&self, _response: Response) -> Result<Gas, ismp_rs::error::Error> {
+        Ok(().into())
     }
 
-    fn on_timeout(&self, _request: Request) -> Result<(), ismp_rs::error::Error> {
-        Ok(())
+    fn on_timeout(&self, _request: Request) -> Result<Gas, ismp_rs::error::Error> {
+        Ok(().into())
     }
 }
 
